@@ -14,13 +14,13 @@ struct TestController: RouteCollection {
     
     func boot(routes: RoutesBuilder) throws {
         
-        let route = routes.grouped("api", "consumer")
+        let route = routes.grouped("api")
         
         route.get("test", use: test)
     }
     
     // post register
-    func test(req: Request) async throws -> String {
+    func test(req: Request)async throws -> String {
         
         // config oracle
         let logger = Logger(label: "oracle-logger")
@@ -51,6 +51,8 @@ struct TestController: RouteCollection {
             print("")
         }
         
+        // Close your connection once done
+        try await connection.close()
         
         return x
     }
