@@ -6,3 +6,16 @@
 //
 
 import Foundation
+import Vapor
+
+
+
+public struct OrderDTO: Codable, Content {
+    
+    public var anr: String?
+    
+    init(anr: String?) {
+        self.anr = anr
+    }
+}
+

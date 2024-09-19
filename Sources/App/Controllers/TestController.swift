@@ -10,17 +10,20 @@ import Vapor
 import Fluent
 import OracleNIO
 
+
 struct TestController: RouteCollection {
     
+    /// <#Description#>
+    /// - Parameter routes: <#routes description#>
     func boot(routes: RoutesBuilder) throws {
         
         let route = routes.grouped("api")
         
-        route.get("test", use: test)
+        route.get("order", use: getOrder)
     }
     
     // post register
-    func test(req: Request)async throws -> String {
+    func getOrder(req: Request)async throws -> [OrderDTO] {
         
         // config oracle
         let logger = Logger(label: "oracle-logger")
@@ -39,22 +42,26 @@ struct TestController: RouteCollection {
           logger: logger
         )
         
-        let rows = try await connection.execute("SELECT werkstoff,sollstk FROM infor.apltsaegen", logger: logger)
+        let rows = try await connection.execute("SELECT * FROM infor.icast_cast_order", logger: logger)
+        
+        var order = [OrderDTO]()
+        
+//        for try await row in rows{
+//            
+//            let x = row.decode(OrderDTO.self)
+//            order.append(x)
+//        }
         
         
-        print(rows)
-        var x = "zonk"
-        for try await (werkstoff, sollstk) in rows.decode((String, Float).self) {
+        for try await (anr) in rows.decode((String).self) {
           // do something with the datatypes.
-             x = werkstoff
-            let y = sollstk
-            print("")
+            order.append(OrderDTO(anr: anr))
         }
         
         // Close your connection once done
         try await connection.close()
         
-        return x
+        return order
     }
      
    
