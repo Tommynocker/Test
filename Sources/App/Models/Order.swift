@@ -19,13 +19,13 @@ public struct OrderDTO: Codable, Content {
     public var fv: String?
     public var formnr: String?
     public var abc: String?
-    public var flgew: Int
+    public var flgew: Float
     public var status: String?
     public var kw: String?
     public var datum: String?
     public var fis: String?
     
-    init(anr: String?, artikel: String?, werkst: String?, fv: String?, formnr: String?, abc: String?, flgew: Int,status: String?,kw: String?,datum: String?, fis: String?) {
+    init(anr: String?, artikel: String?, werkst:String?, fv: String?, formnr: String?, abc: String?, flgew: Float, status: String?, kw: String?, datum: String?, fis: String?) {
         self.anr = anr
         self.artikel = artikel
         self.werkst = werkst
@@ -38,5 +38,21 @@ public struct OrderDTO: Codable, Content {
         self.datum = datum
         self.fis = fis
     }
+    
+    
+    enum CodingKeys: String, CodingKey {
+        case anr = "ANR"
+        case artikel = "ARTIKEL"
+        case werkst = "WERKST"
+        case fv = "FV"
+        case formnr = "FORMNR"
+        case abc = "ABC"
+        case flgew = "FLGEW"
+        case status = "STATUS"
+        case kw = "KW"
+        case datum = "DATUM"
+        case fis = "FIS"
+    }
+    
 }
 
