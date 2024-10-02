@@ -14,8 +14,6 @@ import Logging
 
 struct TestController: RouteCollection {
     
-    /// <#Description#>
-    /// - Parameter routes: <#routes description#>
     func boot(routes: RoutesBuilder) throws {
         
         let route = routes.grouped("api")
@@ -24,6 +22,7 @@ struct TestController: RouteCollection {
     }
     
     // post register
+    @Sendable
     func getOrder(req: Request) async throws -> [OrderDTO] {
         
         // config oracle
@@ -50,16 +49,10 @@ struct TestController: RouteCollection {
             order.append(.init(anr: anr, artikel: artikel, werkst: werkst, fv:fv, formnr: formnr, abc: abc, flgew: flgew, status: status, kw: kw, datum: datum, fis: fis ))
         }
         
-        
         // Close your connection once done
         try await connection.close()
-        
         return order
     }
-     
-   
-    
-    
 }
 
 

@@ -8,10 +8,37 @@
 import Foundation
 import Vapor
 import OracleNIO
+import NIOCore
+import NIOPosix
+
+//@Statement("SELECT \("anr", String.self) FROM infor.icast_cast_order")
+struct OrderStatemant: OraclePreparedStatement {
+    
+    typealias Row = (String)
+    
+
+ 
+//    static let sql = "SELECT anr,artikel,werkst,fv,formnr,abc, flgew, status,kw,datum,fis FROM infor.icast_cast_order"
+    static let sql = "SELECT anr FROM infor.icast_cast_order"
+  
+    func makeBindings() throws -> OracleBindings {
+           var bindings = OracleBindings(capacity: 1)
+           return bindings
+       }
+
+    func decodeRow(_ row: OracleRow) throws -> Row {
+           try row.decode(Row.self)
+       }
+//    func decodeRow(_ row: OracleRow) throws -> OrderDTO {
+//        let (anr, artikel, werkst, fv, formnr, abc, flgew, status, kw, datum, fis) = try row.decode((String, String, String,String,String, String, Float, String,String,String,String).self)
+//        return OrderDTO(anr: anr, artikel: artikel, werkst: werkst, fv: fv, formnr: formnr, abc: abc, flgew: flgew, status: status, kw: kw, datum: datum, fis: fis)
+//    }
+    
+    
+}
 
 
-
-public struct OrderDTO: Codable, Content {
+struct OrderDTO: Codable, Content {
     
     public var anr: String?
     public var artikel: String?
@@ -39,7 +66,6 @@ public struct OrderDTO: Codable, Content {
         self.fis = fis
     }
     
-    
     enum CodingKeys: String, CodingKey {
         case anr = "ANR"
         case artikel = "ARTIKEL"
@@ -53,6 +79,4 @@ public struct OrderDTO: Codable, Content {
         case datum = "DATUM"
         case fis = "FIS"
     }
-    
 }
-

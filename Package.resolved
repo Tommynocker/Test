@@ -1,5 +1,5 @@
 {
-  "originHash" : "f17356f55301899f5f83872f7ccf84edeaf48bfafc7fb5ffaebcf06611d30ffc",
+  "originHash" : "8bc5510a7d63e29f6d65c9166f0d95015425ea81ac6a7537c057b5a0f730ca82",
   "pins" : [
     {
       "identity" : "async-http-client",
@@ -105,17 +105,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/lovetodream/oracle-nio.git",
       "state" : {
-        "branch" : "main",
-        "revision" : "c4da4c16aefdd39792c610df6bb5225d50df044d"
-      }
-    },
-    {
-      "identity" : "postgres-nio",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/vapor/postgres-nio.git",
-      "state" : {
-        "revision" : "cd5318a01a1efcb1e0b3c82a0ce5c9fefaf1cb2d",
-        "version" : "1.22.1"
+        "branch" : "statement-macro",
+        "revision" : "1363a20497ac3a2244400158a89b3228637509ca"
       }
     },
     {
@@ -269,6 +260,15 @@
       "state" : {
         "revision" : "24c800fb494fbee6e42bc156dc94232dc08971af",
         "version" : "2.6.1"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-syntax.git",
+      "state" : {
+        "revision" : "cb53fa1bd3219b0b23ded7dfdd3b2baff266fd25",
+        "version" : "600.0.0"
       }
     },
     {
