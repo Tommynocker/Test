@@ -1,5 +1,5 @@
 {
-  "originHash" : "8bc5510a7d63e29f6d65c9166f0d95015425ea81ac6a7537c057b5a0f730ca82",
+  "originHash" : "5325e114bf0b411c021ad3c1a358652e1b8bcf4fe6229f77aa4a45de580ffdfb",
   "pins" : [
     {
       "identity" : "async-http-client",
@@ -105,8 +105,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/lovetodream/oracle-nio.git",
       "state" : {
-        "branch" : "statement-macro",
-        "revision" : "1363a20497ac3a2244400158a89b3228637509ca"
+        "branch" : "main",
+        "revision" : "3d889f88706c9f4f8b38dfd83fa30b56be584743"
       }
     },
     {

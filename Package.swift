@@ -10,12 +10,12 @@ let package = Package(
     dependencies: [
         // 💧 A server-side Swift web framework.
         .package(url: "https://github.com/vapor/vapor.git", from: "4.99.3"),
-        // 🔵 Non-blocking, event-driven networking for Swift. Used for custom executors
         .package(url: "https://github.com/apple/swift-nio.git", from: "2.65.0"),
-        .package(url: "https://github.com/lovetodream/oracle-nio.git", branch: "statement-macro"),
+        .package(url: "https://github.com/lovetodream/oracle-nio.git", branch: "main"),
         .package(url: "https://github.com/vapor/fluent.git", from: "4.0.0"),
         .package(url: "https://github.com/vapor/fluent-mysql-driver.git", from: "4.0.0"),
         .package(url: "https://github.com/vapor/jwt.git", from: "4.0.0"),
+
         
            
     ],
@@ -27,6 +27,7 @@ let package = Package(
                 .product(name: "NIOCore", package: "swift-nio"),
                 .product(name: "NIOPosix", package: "swift-nio"),
                 .product(name: "OracleNIO", package: "oracle-nio"),
+                .product(name: "OracleNIOMacros", package: "oracle-nio"),
                 .product(name: "Fluent", package: "fluent"),
                 .product(name: "FluentMySQLDriver", package: "fluent-mysql-driver"),
                 .product(name: "JWT", package: "jwt"),

@@ -8,34 +8,38 @@
 import Foundation
 import Vapor
 import OracleNIO
-import NIOCore
-import NIOPosix
+import OracleNIOMacros
 
-//@Statement("SELECT \("anr", String.self) FROM infor.icast_cast_order")
-struct OrderStatemant: OraclePreparedStatement {
-    
-    typealias Row = (String)
-    
 
- 
-//    static let sql = "SELECT anr,artikel,werkst,fv,formnr,abc, flgew, status,kw,datum,fis FROM infor.icast_cast_order"
-    static let sql = "SELECT anr FROM infor.icast_cast_order"
+struct OrderStatemant {
+    
+    struct Row {
+            var id: Int
+            var name: String
+            var age: Int
+        }
+
+        static let sql = "SELECT id, name, age FROM users WHERE :1 < age"
+        
+        var age: OracleNumber
+
+        func makeBindings() throws -> OracleBindings {
+            var bindings = OracleBindings(capacity: 1)
+            bindings.append(age, context: .default, bindName: "1")
+            return bindings
+        }
+
+        func decodeRow(_ row: OracleRow) throws -> Row {
+            let (id, name, age) = try row.decode((Int, String, Int).self)
+            return Row(id: id, name: name, age: age)
+        }
+//    static let sql = "SELECT anr FROM infor.icast_cast_order"
   
-    func makeBindings() throws -> OracleBindings {
-           var bindings = OracleBindings(capacity: 1)
-           return bindings
-       }
-
-    func decodeRow(_ row: OracleRow) throws -> Row {
-           try row.decode(Row.self)
-       }
-//    func decodeRow(_ row: OracleRow) throws -> OrderDTO {
-//        let (anr, artikel, werkst, fv, formnr, abc, flgew, status, kw, datum, fis) = try row.decode((String, String, String,String,String, String, Float, String,String,String,String).self)
-//        return OrderDTO(anr: anr, artikel: artikel, werkst: werkst, fv: fv, formnr: formnr, abc: abc, flgew: flgew, status: status, kw: kw, datum: datum, fis: fis)
-//    }
     
     
 }
+
+extension OrderStatemant: OraclePreparedStatement {}
 
 
 struct OrderDTO: Codable, Content {
