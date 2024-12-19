@@ -57,7 +57,7 @@ struct TestController: RouteCollection {
             for try await data in stream {
                 dataWXZ.append(.init(mnr: data.mnr, werkstoff: data.werkstoff, staerke: data.staerke))
             }
-            
+            print("")
             
 //            if let stream = stream {
 //                for try await (mnr, werkstoff, staerke) in stream.decode((String, String, Float).self) {
