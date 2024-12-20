@@ -55,7 +55,7 @@ struct TestController: RouteCollection {
             
             var dataWXZ = [WXZDTO]()
             for try await data in stream {
-                dataWXZ.append(.init(mnr: data.mnr, werkstoff: data.werkstoff, staerke: data.staerke, stk_v: data.stk_v, kg_v: data.kg_v, stk_l: data.stk_l, kg_l: data.kg_l, bedarfe_stk: data.bedarfe_stk, verbr12_kg: data.verbr12_kg, ktxt: data.ktxt, bemerkung: data.bemerkung ?? "", variante: data.variante, gueltigkeit: data.gueltigkeit, verbrauchq1: data.verbrauchq1, verbrauchq2: data.verbrauchq2, verbrauchq3: data.verbrauchq3))
+                dataWXZ.append(.init(mnr: data.mnr, werkstoff: data.werkstoff, staerke: data.staerke, stk_v: data.stk_v, kg_v: data.kg_v, stk_l: data.stk_l, kg_l: data.kg_l, bedarfe_stk: data.bedarfe_stk, verbr12_kg: data.verbr12_kg, ktxt: data.ktxt, bemerkung: data.bemerkung ?? "", variante: data.variante, gueltigkeit: data.gueltigkeit, verbrauchq1: data.verbrauchq1, verbrauchq2: data.verbrauchq2, verbrauchq3: data.verbrauchq3, verbrauchq4: data.verbrauchq4))
             }
             print("")
             
